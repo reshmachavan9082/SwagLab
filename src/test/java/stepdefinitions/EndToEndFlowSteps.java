@@ -6,7 +6,10 @@ import base.Base;
 import io.cucumber.java.en.*;
 import io.cucumber.messages.types.Product;
 import pages.CartPage;
+import pages.CheckOutComplete;
 import pages.CheckOutPage;
+import pages.CheckoutOverviewPage;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductPage;
 
@@ -16,6 +19,9 @@ public class EndToEndFlowSteps extends Base {
 	ProductPage product;
 	CartPage cart;
 	CheckOutPage check;
+	CheckoutOverviewPage checkOverview;
+	CheckOutComplete checkComplete;
+	HomePage homepage;
 
 	@Given("user launches the browser")
 	public void user_launches_the_browser() {
@@ -51,36 +57,47 @@ public class EndToEndFlowSteps extends Base {
 	@When("user click to checkout button")
 	public void user_click_to_checkout_button() {
 		cart = new CartPage(Base.driver);
-		cart.clickTocheckOutBtn();
+		cart.clickToCheckOutBtn();
 	}
 
 	@When("user enter checkoit details {string} {string} {string}")
-	public void user_enter_checkoit_details(String uName, String lName, String pincode) {
-		check=new CheckOutPage(Base.driver);
-		check.clickToCheckOutDetails(uName, lName, pincode);
+	public void user_enter_checkoit_details(String uName, String lName, String pincode) throws InterruptedException {
+		check = new CheckOutPage(Base.driver);
+		check.fillCheckOutDetails(uName, lName, pincode);
 
 	}
 
 	@When("user click on continue button")
 	public void user_click_on_continue_button() {
 
-		check=new CheckOutPage(Base.driver);
+		check = new CheckOutPage(Base.driver);
 		check.clickToContinue();
 	}
 
 	@When("user click on finish button")
 	public void user_click_on_finish_button() {
 
+		checkOverview = new CheckoutOverviewPage(Base.driver);
+		checkOverview.clickFinishButton();
 	}
 
 	@Then("user should show confirmation message {string}")
 	public void user_should_show_confirmation_message(String string) {
 
+//		checkComplete = new CheckOutComplete(Base.driver);
+//		checkComplete.clickBackToHomeButton();
 	}
 
 	@Then("user logout from the application")
-	public void user_logout_from_the_application() {
+	public void user_logout_from_the_application() throws InterruptedException {
 
+//		homepage = new HomePage(Base.driver);
+//		homepage.clickLogoutButton();
+	}
+
+	@Then("user quit the browser")
+	public void user_quit_the_browser() {
+		// driver.close();
 	}
 
 }

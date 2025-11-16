@@ -32,10 +32,12 @@ public class CheckOutPage {
 	}
 
 
-	public void clickToCheckOutDetails(String fname, String lname, String pincode) {
+	public void fillCheckOutDetails(String fname, String lname, String pincode) throws InterruptedException {
 
 		enterFirstName(fname);
+		Thread.sleep(500);
 		enterLastName(lname);
+		Thread.sleep(500);
 		enterPincode(pincode);
 
 	}

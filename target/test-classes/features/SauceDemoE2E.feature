@@ -18,3 +18,4 @@ And user click on continue button
 And user click on finish button
 Then user should show confirmation message "Thank you for your order!"
 And user logout from the application
+And user quit the browser
