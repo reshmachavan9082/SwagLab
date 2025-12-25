@@ -16,16 +16,16 @@ import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
 
 public class ScreenshotUtils extends Base {
     // 🔹 Take full-page scrolling screenshot using AShot
-    public static void takeFullPageScrollingScreenshot(WebDriver driver, Scenario scenario, String name) {
+    public static void takeFullPageScrollingScreenshot(WebDriver driver, String name) {
         try {
             Screenshot screenshot = new AShot()
-                    .shootingStrategy(ShootingStrategies.viewportPasting(1000)) // 1s scroll
+                    .shootingStrategy(ShootingStrategies.viewportPasting(1000)) // 1s wait to scroll
                     .takeScreenshot(driver);
             File file = new File("target/screenshots/" + name + ".png");
             ImageIO.write(screenshot.getImage(), "PNG", file);
-
+ 
             // Attach to Cucumber report
-            scenario.attach(FileUtils.fileToBytes(file), "image/png", name);
+           // scenario.attach(FileUtils.fileToBytes(file), "image/png", name);
         } catch (IOException e) {
             System.out.println("❌ Failed to save full-page scrolling screenshot: " + e.getMessage());
         }

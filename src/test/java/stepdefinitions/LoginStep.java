@@ -4,9 +4,13 @@ import base.Base;
 import io.cucumber.java.en.*;
 import pages.LoginPage;
 
-public class LoginStep extends Base {
+public class LoginStep {
 
 	LoginPage login;
+
+    public LoginStep() {
+        this.login = new LoginPage(Base.driver);
+    }
 
 	@Given("verify user launches the browser")
 	public void verify_user_launches_the_browser() {
@@ -32,7 +36,7 @@ public class LoginStep extends Base {
 
 	@Then("user should be navigated to product page")
 	public void user_should_be_navigated_to_product_page() {
-		String actualTitle = driver.getTitle();
+		String actualTitle = Base.driver.getTitle();
 		String expecedTtitle = "Swag Labs";
 		if (expecedTtitle.equals(actualTitle)) {
 			System.out.println("✅ User navigated to product page successfully");
@@ -43,7 +47,7 @@ public class LoginStep extends Base {
 
 	@Then("the user quit the browser")
 	public void the_user_quit_the_browser() {
-		tearDown();
+		System.out.println("Browser closed via Hooks");
 	}
 
 }

@@ -1,7 +1,11 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -16,11 +20,15 @@ public class LoginPage {
 	}
 
 	public void enterUserName(String uName) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(userName));
 		driver.findElement(userName).sendKeys("standard_user");
 
 	}
 
 	public void enterPassword(String pass) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.visibilityOfElementLocated(password));
 		driver.findElement(password).sendKeys("secret_sauce");
 
 	}

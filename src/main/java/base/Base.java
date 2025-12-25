@@ -28,20 +28,13 @@ public class Base {
 		String browser = ConfigReader.getProperties("browser");//this method return the value of given key so we need to store that value
 
 		if (browser.equalsIgnoreCase("Chrome")) {
-
 			driver = new ChromeDriver(options);
-
-			// driver = new ChromeDriver();
-			// driver.get("https://www.saucedemo.com/");
 			System.out.println("Browser launched");
 		}
 	}
 
 	public void openApplicationURL() {
-		
-		
 		driver.get(ConfigReader.getProperties("url"));
-
 		System.out.println("Application launched sucessfully");
 	}
 

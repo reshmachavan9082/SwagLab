@@ -13,7 +13,7 @@ import pages.HomePage;
 import pages.LoginPage;
 import pages.ProductPage;
 
-public class EndToEndFlowSteps extends Base {
+public class EndToEndFlowSteps{
 
 	LoginPage login;
 	ProductPage product;
@@ -22,16 +22,6 @@ public class EndToEndFlowSteps extends Base {
 	CheckoutOverviewPage checkOverview;
 	CheckOutComplete checkComplete;
 	HomePage homepage;
-
-	@Given("user launches the browser")
-	public void user_launches_the_browser() {
-		launchBrowser();
-	}
-
-	@Given("user open application url")
-	public void user_open_application_url() {
-		openApplicationURL();
-	}
 
 	@Given("user logs in with valid credentials {string} and {string}")
 	public void user_logs_in_with_valid_credentials_and(String uName, String pass) {
@@ -97,7 +87,8 @@ public class EndToEndFlowSteps extends Base {
 
 	@Then("user quit the browser")
 	public void user_quit_the_browser() {
-		// driver.close();
+		// driver.close();//this handled in hooks
+		System.out.println("close the browser");
 	}
 
 }

@@ -6,11 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import base.Base;
+import io.cucumber.java.Scenario;
+import utilities.ScreenshotUtils;
 import utilities.WaitUtils;
 
 public class ProductPage {
 
 	WebDriver driver;
+	Scenario scenario;
 
 	// private By addToCartBtn = By.id("add-to-cart-sauce-labs-backpack");
 	private By cartIcon = By.className("shopping_cart_badge");
@@ -19,6 +22,7 @@ public class ProductPage {
 
 	public ProductPage(WebDriver driver) {
 		this.driver = driver;
+		//this.scenario=scenario;
 	}
 
 //	public void addProductToCart(String productName) {
@@ -53,6 +57,8 @@ public class ProductPage {
 				.xpath("//div[text()='" + productName + "']/ancestor::div[@class='inventory_item']//button");
 		WebElement addCartBtn = driver.findElement(addToCartBtn);
 		WaitUtils.waitForElementToBeClickable(driver, addCartBtn);
+		
+		//ScreenshotUtils.takeFullPageScrollingScreenshot(driver, scenario, "failaddtocart");
 
 		addCartBtn.click();
 		System.out.println("✅ Added product to cart: " + productName);

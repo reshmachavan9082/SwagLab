@@ -1,12 +1,12 @@
 
-@smoke @regression
+@smoke @regression @requiresLogin
 Feature: End to end flow for purchase product on SauceDemo site
 
 
 Background:
 
-Given user launches the browser
-And user open application url
+#Given user launches the browser
+#And user open application url
 And user logs in with valid credentials "standard_user" and "secret_sauce"
 
 Scenario: verify user can complete purchase successfully

@@ -6,12 +6,21 @@ import org.testng.Assert;
 
 import base.Base;
 import io.cucumber.java.en.*;
+import pages.CartPage;
 import pages.ProductPage;
 import utilities.WaitUtils;
 
-public class ProductStep extends Base {
+public class ProductStep{
 
 	// ProductPage product;//hooks have same ref variavle so commented this
+	
+	  ProductPage product;
+	    CartPage cart;
+
+	    public ProductStep() {
+	        this.product = Base.product;
+	        this.cart = Base.cart;
+	    }
 
 	@Given("user is logged into the SwagLab application")
 	public void user_is_logged_into_the_swag_lab_application() {
@@ -47,7 +56,9 @@ public class ProductStep extends Base {
 	public void user_adds_product_to_the_cart(String productName) {
 		product.addProductToCart(productName);
 	
-		product.clickToCartBucket();
+				product.clickToCartBucket();
+				
+				
 		System.out.println("🛒 Navigated to Cart Page after adding: " + productName);
 	}
 
@@ -61,7 +72,7 @@ public class ProductStep extends Base {
 	@When("user adds multiple products to cart")
 	public void user_adds_multiple_products_to_cart(List<String> products) {
 		for (String product : products) {
-			Base.product.addProductToCart(product);
+			Base.product.addProductToCart(product);//screenshot
 		}
 	}
 
